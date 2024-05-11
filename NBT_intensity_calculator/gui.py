@@ -12,7 +12,7 @@ from nbt_intensity import nbt_intensity
 
 try:
     icon_url = urlopen(
-        "https://raw.githubusercontent.com/mylab-root/mylab-root.github.io/main/contents/software/icon.ico"
+        "https://raw.githubusercontent.com/mylab-root/NBT-staining/main/NBT_intensity_calculator/icon.ico"
     )
     icon = icon_url.read()
     icon_url.close()
