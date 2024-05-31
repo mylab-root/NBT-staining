@@ -58,11 +58,11 @@ def nbt_intensity(img):
         roi = np.multiply(roi, 255).astype(np.uint8)
 
         # Filtering process
-        for _ in range(5):
-            roi = cv2.medianBlur(roi, 7)
-            roi = min_filter(roi, (5, 5), iteration=1)
-            roi = cv2.medianBlur(roi, 7)
-            roi = max_filter(roi, (5, 5), iteration=1)
+        for _ in range(7):
+            roi = cv2.medianBlur(roi, 17)
+            roi = min_filter(roi, (11, 11), iteration=1)
+            roi = cv2.medianBlur(roi, 17)
+            roi = max_filter(roi, (11, 11), iteration=1)
 
         # Create contour
         contours, hierarchy = cv2.findContours(
@@ -83,9 +83,9 @@ def nbt_intensity(img):
 
         # Plotting
         ## Draw contour line on a blank image
-        contours = cv2.drawContours(B * 0, contours, -1, (255, 0, 0), thickness=3)
+        contours = cv2.drawContours(B * 0, contours, -1, (200, 200, 50), thickness=3)
         ## Show the coutour as red color
-        contours = cv2.merge([contours, contours * 0, contours * 0])
+        contours = cv2.merge([contours, contours, contours * 0])
         ## Combined the original image with the contour line
         contours = cv2.addWeighted(raw_img, 1, contours, 1, 0)
 
